@@ -37,6 +37,7 @@ namespace GenericsTask8
             List<int> NewList = new List<int>();
             NewList.Add(avgValue);
             int index = 0;
+            mylist.RemoveAt(avgIndex);
             for (int i = 0; i < mylist.Count; i++)
             {
                 if (mylist[i] > avgValue)
@@ -46,7 +47,7 @@ namespace GenericsTask8
                     NewList.Insert(0, mylist[i]);
                     index++;
                 }
-                if (mylist[i] < avgValue)
+                if (mylist[i] == avgValue)
                     NewList.Insert(index+1, mylist[i]);
             }
             mylist.Clear();
