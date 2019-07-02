@@ -18,22 +18,39 @@ namespace GenericsTask8
             }
             int avgIndex = mylist.Count / 2;
             int avgValue = mylist[avgIndex];
-            List<int> less = new List<int>();
-            List<int> more = new List<int>();
-            List<int> equil = new List<int>();
+            //List<int> less = new List<int>();
+            //List<int> more = new List<int>();
+            //List<int> equil = new List<int>();
+            //for (int i = 0; i < mylist.Count; i++)
+            //{
+            //    if (mylist[i] < avgValue)
+            //        less.Add(mylist[i]);
+            //    if (mylist[i] > avgValue)
+            //        more.Add(mylist[i]);
+            //    if (mylist[i] == avgValue)
+            //        equil.Add(mylist[i]);
+            //}
+            //mylist.Clear();
+            //mylist.AddRange(less);
+            //mylist.AddRange(equil);
+            //mylist.AddRange(more);
+            List<int> NewList = new List<int>();
+            NewList.Add(avgValue);
+            int index = 0;
             for (int i = 0; i < mylist.Count; i++)
             {
-                if (mylist[i] < avgValue)
-                    less.Add(mylist[i]);
                 if (mylist[i] > avgValue)
-                    more.Add(mylist[i]);
-                if (mylist[i] == avgValue)
-                    equil.Add(mylist[i]);
+                    NewList.Add(mylist[i]);
+                if (mylist[i] < avgValue)
+                {
+                    NewList.Insert(0, mylist[i]);
+                    index++;
+                }
+                if (mylist[i] < avgValue)
+                    NewList.Insert(index+1, mylist[i]);
             }
             mylist.Clear();
-            mylist.AddRange(less);
-            mylist.AddRange(equil);
-            mylist.AddRange(more);
+            mylist.AddRange(NewList);
             Console.WriteLine("AvgValue = {0}", avgValue);
             mylist.ForEach(Console.WriteLine);
             Console.ReadLine();
